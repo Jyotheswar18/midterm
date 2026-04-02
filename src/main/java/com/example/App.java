@@ -8,9 +8,9 @@ public class App {
             return "Invalid Marks";
         }
 
-        if (a >= 90) {
+        if (a >= 95) {
             return "Grade S";
-        } else if (a >= 80) {
+        } else if (a >= 85) {
             return "Grade A";
         } else if (a >= 70) {
             return "Grade B";
