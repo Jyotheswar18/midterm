@@ -1,27 +1,40 @@
 package com.example;
 
-public class App {
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-    public String getGrade(int a) {
+public class AppTest {
 
-        if (a < 0 || a > 100) {
-            return "Invalid Marks";
-        }
+    @Test
+    public void testGrades() {
+        App app = new App();
 
-        if (a >= 90) {
-            return "Grade S";
-        } else if (a >= 80) {
-            return "Grade A";
-        } else if (a >= 70) {
-            return "Grade B";
-        } else if (a >= 60) {
-            return "Grade C";
-        } else if (a >= 50) {
-            return "Grade D";
-        } else if (a >= 40) {
-            return "Grade E";
-        } else {
-            return "Grade F";
-        }
+        assertEquals("Grade S", app.getGrade(95));
+        assertEquals("Grade A", app.getGrade(85));
+        assertEquals("Grade B", app.getGrade(72));
+        assertEquals("Grade C", app.getGrade(60));
+        assertEquals("Grade D", app.getGrade(55));
+        assertEquals("Grade E", app.getGrade(45));
+        assertEquals("Grade F", app.getGrade(30));
+    }
+
+    @Test
+    public void testEdgeCases() {
+        App app = new App();
+
+        assertEquals("Grade S", app.getGrade(100));
+        assertEquals("Grade F", app.getGrade(0));
+    }
+
+    @Test
+    public void testBoundaryValues() {
+        App app = new App();
+
+        assertEquals("Grade E", app.getGrade(40));
+        assertEquals("Grade D", app.getGrade(50));
+        assertEquals("Grade C", app.getGrade(60));
+        assertEquals("Grade B", app.getGrade(70));
+        assertEquals("Grade A", app.getGrade(80));
+        assertEquals("Grade S", app.getGrade(90));
     }
 }
